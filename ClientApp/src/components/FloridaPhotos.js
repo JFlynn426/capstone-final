@@ -4,7 +4,7 @@ class FloridaPhotos extends Component {
   render() {
     return (
       <div>
-        <h1>hey</h1>
+        <h1>Florida Photography</h1>
       </div>
     )
   }

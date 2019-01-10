@@ -17,9 +17,6 @@ export class Home extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="title">
-            <h1>John Flynn Photography</h1>
-          </header>
           <section>
             <Link to="/FloridaPhotos">
               <h2>Florida Photography</h2>

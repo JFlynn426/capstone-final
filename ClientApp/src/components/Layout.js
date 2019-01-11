@@ -28,7 +28,6 @@ export class Layout extends Component {
         <header className="title">
           <h1>John Flynn Photography</h1>
         </header>
-
         <div>{this.props.children}</div>
       </div>
     )

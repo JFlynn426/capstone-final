@@ -20,7 +20,7 @@ export class Home extends Component {
           <section>
             <Link to="/FloridaPhotos">
               <h2>Florida Photography</h2>
-              <section className="ImageContainer">
+              <section>
                 <img className="catImage" src={burrowingowlpounce} />
                 <img className="catImage" src={oystercatchercalling} />
                 <img className="catImage" src={whistling} />
@@ -30,7 +30,7 @@ export class Home extends Component {
           <section>
             <Link to="/NorthEastPhotos">
               <h2>North East Photography</h2>
-              <section className="ImageContainer">
+              <section>
                 <img className="catImage" src={barredowlportrait} />
                 <img className="catImage" src={snowyowlraiseup} />
                 <img className="catImage" src={baldeaglebanking} />
@@ -40,7 +40,7 @@ export class Home extends Component {
           <section>
             <Link to="/TravelLandscapePhotos">
               <h2>Travel/Landscape Photography</h2>
-              <section className="ImageContainer">
+              <section>
                 <img className="catImage" src={sunset} />
                 <img className="catImage" src={quail} />
                 <img className="catImage" src={redeyed} />

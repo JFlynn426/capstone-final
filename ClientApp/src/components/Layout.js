@@ -15,11 +15,11 @@ export class Layout extends Component {
           <a id="home" className="menu-item" href="/">
             Home
           </a>
-          <a id="about" className="menu-item" href="/about">
-            About
+          <a id="CategoryView" className="menu-item" href="/CategoryView">
+            Category View
           </a>
-          <a id="contact" className="menu-item" href="/contact">
-            Contact
+          <a id="PhotoView" className="menu-item" href="/PhotoView">
+            Photo View
           </a>
           <a onClick={this.showSettings} className="menu-item--small" href="">
             Settings

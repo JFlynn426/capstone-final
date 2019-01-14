@@ -4,7 +4,7 @@ import { Layout } from './components/Layout'
 import { Home } from './components/Home'
 import CategoryView from './components/CategoryView'
 import PhotoView from './components/PhotoView'
-import TravelLandscapePhotos from './components/TravelLandscapePhotos'
+import PhotoUpload from './components/PhotoUpload'
 
 export default class App extends Component {
   static displayName = App.name
@@ -15,10 +15,7 @@ export default class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/CategoryView" component={CategoryView} />
         <Route path="/PhotoView" component={PhotoView} />
-        <Route
-          path="/TravelLandscapePhotos"
-          component={TravelLandscapePhotos}
-        />
+        <Route path="/PhotoUpload" component={PhotoUpload} />
       </Layout>
     )
   }

@@ -21,8 +21,8 @@ export class Layout extends Component {
           <a id="PhotoView" className="menu-item" href="/PhotoView">
             Photo View
           </a>
-          <a onClick={this.showSettings} className="menu-item--small" href="">
-            Settings
+          <a className="menu-item--small" href="/PhotoUpload">
+            Photo Upload
           </a>
         </Menu>
         <header className="title">

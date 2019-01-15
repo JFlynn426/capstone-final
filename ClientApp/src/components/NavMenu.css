@@ -1,4 +1,9 @@
-﻿header {
+﻿html,
+body {
+  min-height: 100vh;
+}
+
+header {
   text-align: center;
 }
 .dropzone {
@@ -31,12 +36,13 @@
   text-shadow: 4px 4px 7px black;
   padding: 0;
 }
-textarea {
-  margin: 7px;
+.input-group-text {
+  background-color: rgb(136, 204, 158);
+  width: 225px;
 }
 h1 {
   text-align: center;
-  color: white;
+  color: rgb(136, 204, 158);
   text-shadow: 4px 4px 7px black;
 }
 .photoview {
@@ -74,7 +80,7 @@ img {
 }
 .CatView {
   display: flex;
-  height: 120vh;
+  min-height: 100vh;
   justify-content: space-around;
   flex-wrap: wrap;
 }
@@ -94,12 +100,13 @@ body {
       rgba(209, 209, 209, 0.24)
     ),
     url(./backgrounds/trees.jpg);
-  backrgba(209, 209, 209, 0.493)background-color: black;
+  /* , backrgba(209, 209, 209, 0.493); */
+  background-color: black;
+  background-repeat: repeat;
 }
 .App {
   text-align: center;
   padding: 20px 0 0 0;
-  height: 120vh;
 }
 .ImageContainer {
   text-align: center;
@@ -176,4 +183,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 a {
   color: white;
   text-shadow: 4px 4px 7px black;
+}
+button {
+  float: right;
 }

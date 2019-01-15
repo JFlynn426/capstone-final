@@ -1,7 +1,7 @@
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 
-namespace MasterReview.ImageUtilities
+namespace Capstone.ImageUtilities
 {
   public class CloudinaryHelper
   {

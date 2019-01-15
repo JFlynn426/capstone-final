@@ -42,7 +42,7 @@ class PhotoUpload extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Dropzone onDrop={this.onDrop}>
           {({ getRootProps, getInputProps, isDragActive }) => {
             return (
@@ -71,16 +71,35 @@ class PhotoUpload extends Component {
             )
           }}
         </Dropzone>
-        <section className="UploadInputs">
-          <p className="inputtext" onChange={this.updateTitle}>
-            Species/Picture Name
-          </p>
-          <input type="text" />
-        </section>
-        <p className="inputtext" onChange={this.updateDescription}>
-          Species/Picture Information
-        </p>
-        <textarea rows="8" cols="100" />
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text" id="basic-addon1">
+              Species/Picture Name
+            </span>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            onChange={this.updateTitle}
+          />
+        </div>
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              Species/Picture Information
+            </span>
+          </div>
+          <textarea
+            className="form-control"
+            aria-label="With textarea"
+            rows="10"
+          />
+        </div>
+        <button type="button" class="btn btn-success">
+          Submit to site
+        </button>
       </div>
     )
   }

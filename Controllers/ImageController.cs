@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.ImageUtilities;
 using MasterReview.ImageUtilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace content.Controllers
+namespace Capstone.Controllers
 {
   [Route("api/[controller]")]
   public class ImageController : Controller

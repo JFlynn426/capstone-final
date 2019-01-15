@@ -2,13 +2,33 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import Dropzone from 'react-dropzone'
 import uploadicon from './backgrounds/cloud-upload-1.png'
+import axios from 'axios'
 
 class PhotoUpload extends Component {
   state = {
     title: '',
-    description: ''
+    description: '',
+    image: ''
   }
-  onDrop = (acceptedFiles, rejectedFiles) => {}
+  onDrop = files => {
+    const form = new FormData()
+    form.append('file', files[0])
+    console.log(files)
+
+    axios
+      .post('/api/image', form, {
+        headers: {
+          'content-type': 'multipart/form-data',
+          accept: 'application/json'
+        }
+      })
+      .then(resp => {
+        console.log({ resp })
+        this.setState({
+          image: resp.data
+        })
+      })
+  }
   updateTitle = event => {
     this.setState({
       title: event.target.value

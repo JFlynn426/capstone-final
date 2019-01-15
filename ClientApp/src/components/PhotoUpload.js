@@ -8,7 +8,7 @@ class PhotoUpload extends Component {
   state = {
     title: '',
     description: '',
-    image: ''
+    image: uploadicon
   }
   onDrop = files => {
     const form = new FormData()
@@ -25,7 +25,7 @@ class PhotoUpload extends Component {
       .then(resp => {
         console.log({ resp })
         this.setState({
-          image: resp.data
+          image: resp.data.secure_url
         })
       })
   }
@@ -59,7 +59,7 @@ class PhotoUpload extends Component {
                   <section>
                     <img
                       className="uploadicon"
-                      src={uploadicon}
+                      src={this.state.image}
                       alt="upload icon"
                     />
                     <p>

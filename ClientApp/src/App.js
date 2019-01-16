@@ -14,7 +14,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path="/" component={Home} />
         <Route path="/CategoryView" component={CategoryView} />
-        <Route path="/PhotoView" component={PhotoView} />
+        <Route path="/PhotoView/:photoID" component={PhotoView} />
         <Route path="/PhotoUpload" component={PhotoUpload} />
       </Layout>
     )

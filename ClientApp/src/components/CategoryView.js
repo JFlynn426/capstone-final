@@ -1,54 +1,36 @@
 import React, { Component } from 'react'
-import burrowingowlpounce from './FloridaPhotos/BurrowingOwlPounce.jpg'
-import oystercatchercalling from './FloridaPhotos/OystercatcherCalling.jpg'
-import barredowlportrait from './NortheastPhotos/BarredOwlPortrait.jpg'
-import snowyowlraiseup from './NortheastPhotos/SnowOwlRaiseUp.jpg'
-import baldeaglebanking from './NortheastPhotos/BaldEagleBanking.jpg'
-import sunset from './TravelLandscape/Sunset.jpg'
-import quail from './TravelLandscape/Quail.jpg'
-import redeyed from './TravelLandscape/RedEyedTreeFrog.jpg'
-import whistling from './FloridaPhotos/WhistlingDuckFlight.jpg'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class CategoryView extends Component {
+  state = {
+    search: []
+  }
+  componentDidMount() {
+    this.loadInfo()
+  }
+  loadInfo = () => {
+    axios.get('https://localhost:5001/api/Update').then(resp => {
+      this.setState({
+        search: resp.data
+      })
+    })
+  }
   render() {
     return (
       <div className="CatView">
-        <div className="ImageContainer">
-          <img className="catImage" src={burrowingowlpounce} />
-          <section className="nameplate">Burrowing Owl</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={oystercatchercalling} />
-          <section className="nameplate">Oystercatcher</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={whistling} />
-          <section className="nameplate">Black-Bellied Whistling Duck</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={barredowlportrait} />
-          <section className="nameplate">Barred Owl</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={snowyowlraiseup} />
-          <section className="nameplate">Snowy Owl</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={baldeaglebanking} />
-          <section className="nameplate">Bald Eagle</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={sunset} />
-          <section className="nameplate">Sunset Over The Lake</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={quail} />
-          <section className="nameplate">California Quail</section>
-        </div>
-        <div className="ImageContainer">
-          <img className="catImage" src={redeyed} />
-          <section className="nameplate">Red-Eyed Tree Frog</section>
-        </div>
+        {this.state.search.map(image => {
+          return (
+            <Link
+              key={image.id}
+              to={`/PhotoView/${image.id}`}
+              className="ImageContainer"
+            >
+              <img className="catImage" src={image.imageUrl} />
+              <section className="nameplate">{image.speciesName}</section>
+            </Link>
+          )
+        })}
       </div>
     )
   }

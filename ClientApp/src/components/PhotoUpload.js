@@ -39,6 +39,21 @@ class PhotoUpload extends Component {
       description: event.target.value
     })
   }
+  sendToDB = event => {
+    axios
+      .post('https://localhost:5001/api/Update', {
+        SpeciesName: `${this.state.title}`,
+        PictureInfo: `${this.state.description}`,
+        ImageUrl: `${this.state.image}`
+      })
+      .then(
+        this.setState({
+          title: '',
+          description: '',
+          image: uploadicon
+        })
+      )
+  }
 
   render() {
     return (
@@ -95,9 +110,14 @@ class PhotoUpload extends Component {
             className="form-control"
             aria-label="With textarea"
             rows="10"
+            onChange={this.updateDescription}
           />
         </div>
-        <button type="button" class="btn btn-success">
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={this.sendToDB}
+        >
           Submit to site
         </button>
       </div>

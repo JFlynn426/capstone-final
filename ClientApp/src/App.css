@@ -16,3 +16,12 @@ p {
   margin: 0 0 0 0;
   color: lightblue;
 }
+
+.carousel-item,
+.carousel-item.active {
+  align-items: center;
+}
+
+.d-block.w-100 {
+  height: 80vh;
+}

@@ -29,7 +29,7 @@ namespace Capstone.Controllers
       return newPicture;
     }
     [HttpGet]
-    public async Task<ActionResult<List<Picture>>> GetPics()
+    public async Task<ActionResult<List<Picture>>> GetAll()
     {
       var results = this.db.Pictures;
       return await results.ToListAsync();

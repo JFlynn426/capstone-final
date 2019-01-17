@@ -5,6 +5,7 @@ import { Home } from './components/Home'
 import CategoryView from './components/CategoryView'
 import PhotoView from './components/PhotoView'
 import PhotoUpload from './components/PhotoUpload'
+import TagView from './components/TagView'
 
 export default class App extends Component {
   static displayName = App.name
@@ -13,7 +14,8 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path="/" component={Home} />
-        <Route path="/CategoryView" component={CategoryView} />
+        <Route path="/CategoryView/:category" component={CategoryView} />
+        <Route path="/TagView/:tag" component={TagView} />
         <Route path="/PhotoView/:photoID" component={PhotoView} />
         <Route path="/PhotoUpload" component={PhotoUpload} />
       </Layout>

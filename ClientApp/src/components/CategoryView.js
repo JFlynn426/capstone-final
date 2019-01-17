@@ -10,11 +10,14 @@ class CategoryView extends Component {
     this.loadInfo()
   }
   loadInfo = () => {
-    axios.get('https://localhost:5001/api/Update').then(resp => {
-      this.setState({
-        search: resp.data
+    const category = this.props.match.params.category
+    axios
+      .get(`https://localhost:5001/api/CategoryView/${category}`)
+      .then(resp => {
+        this.setState({
+          search: resp.data
+        })
       })
-    })
   }
   render() {
     return (

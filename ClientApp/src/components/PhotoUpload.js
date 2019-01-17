@@ -8,7 +8,9 @@ class PhotoUpload extends Component {
   state = {
     title: '',
     description: '',
-    image: uploadicon
+    image: uploadicon,
+    category: '',
+    tag: ''
   }
   onDrop = files => {
     const form = new FormData()
@@ -39,19 +41,32 @@ class PhotoUpload extends Component {
       description: event.target.value
     })
   }
+  updateCategory = event => {
+    this.setState({
+      category: event.target.value
+    })
+  }
+  updateTag = event => {
+    this.setState({
+      tag: event.target.value
+    })
+  }
   sendToDB = event => {
     axios
       .post('https://localhost:5001/api/Update', {
         SpeciesName: `${this.state.title}`,
         PictureInfo: `${this.state.description}`,
-        ImageUrl: `${this.state.image}`
+        ImageUrl: `${this.state.image}`,
+        Place: `${this.state.category}`,
+        Tags: `${this.state.tag}`
       })
       .then(
-        this.setState({
-          title: '',
-          description: '',
-          image: uploadicon
-        })
+        console.log(`${this.state.title}, ${this.state.description}`)
+        // this.setState({
+        //   title: '',
+        //   description: '',
+        //   image: uploadicon
+        // })
       )
   }
 
@@ -86,6 +101,47 @@ class PhotoUpload extends Component {
             )
           }}
         </Dropzone>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <label className="input-group-text" for="inputGroupSelect01">
+              Category
+            </label>
+          </div>
+          <select
+            className="custom-select"
+            id="inputGroupSelect01"
+            onChange={this.updateCategory}
+          >
+            <option selected>Choose...</option>
+            <option value="Northeast Photography">Northeast Photography</option>
+            <option value="Florida Photography">Florida Photography</option>
+            <option value="Travel/Landscape Photography">
+              Travel/Landscape Photography
+            </option>
+          </select>
+        </div>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <label className="input-group-text" for="inputGroupSelect01">
+              Tag
+            </label>
+          </div>
+          <select
+            className="custom-select"
+            id="inputGroupSelect01"
+            onChange={this.updateTag}
+          >
+            <option selected>Choose...</option>
+            <option value="Hawks/Eagles">Hawks/Eagles</option>
+            <option value="Owls">Owls</option>
+            <option value="Small Songbirds">Small Songbirds</option>
+            <option value="Ducks and Waterfowl">Ducks and Waterfowl</option>
+            <option value="Larger Misc. Birds">Larger Misc. Birds</option>
+            <option value="Landscape">Landscape</option>
+            <option value="Non-Avian Wildlife">Non-Avian Wildlife</option>
+            <option value="Shorebirds">Shorebirds</option>
+          </select>
+        </div>
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text" id="basic-addon1">

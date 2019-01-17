@@ -12,21 +12,18 @@ using Microsoft.EntityFrameworkCore;
 namespace Capstone.Controllers
 {
   [Route("api/[controller]")]
-  public class CategoryViewController : Controller
+  public class CatsController : Controller
   {
     private DatabaseContext db;
 
-    public CategoryViewController()
+    public CatsController()
     {
       this.db = new DatabaseContext();
     }
     [HttpGet]
-    public async Task<ActionResult<List<Picture>>> Get([FromRoute] string Category)
+    public async Task<ActionResult<IEnumerable<Location>>> GetAllCats()
     {
-      var results = this.db.Pictures.Where(Picture => Picture.Place.Place.ToLower() == Category.ToLower());
-      return await results.ToListAsync();
+      return await this.db.Place.ToListAsync();
     }
-
   }
 }
-

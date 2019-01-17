@@ -20,12 +20,13 @@ namespace Capstone.Controllers
     {
       this.db = new DatabaseContext();
     }
-    [HttpGet]
+    [HttpGet("{Tag}")]
     public async Task<ActionResult<List<Picture>>> Get([FromRoute] string Tag)
     {
       var results = this.db.Pictures.Where(Picture => Picture.Tags.Tags.ToLower() == Tag.ToLower());
       return await results.ToListAsync();
     }
+
   }
 
 }

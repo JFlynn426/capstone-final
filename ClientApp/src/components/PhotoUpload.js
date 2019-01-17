@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Dropzone from 'react-dropzone'
 import uploadicon from './backgrounds/cloud-upload-1.png'
 import axios from 'axios'
+// import { getEnabledCategories } from 'trace_events'
 
 class PhotoUpload extends Component {
   state = {
@@ -10,7 +11,29 @@ class PhotoUpload extends Component {
     description: '',
     image: uploadicon,
     category: '',
-    tag: ''
+    tag: '',
+    categoryInfo: [],
+    tagInfo: []
+  }
+  componentDidMount = () => {
+    this.getCategories()
+    this.getTags()
+  }
+  getCategories = () => {
+    axios.get('https://localhost:5001/api/cats').then(resp => {
+      console.log({ resp })
+      this.setState({
+        categoryInfo: resp.data
+      })
+    })
+  }
+  getTags = () => {
+    axios.get('https://localhost:5001/api/tags').then(resp => {
+      console.log({ resp })
+      this.setState({
+        tagInfo: resp.data
+      })
+    })
   }
   onDrop = files => {
     const form = new FormData()
@@ -113,11 +136,9 @@ class PhotoUpload extends Component {
             onChange={this.updateCategory}
           >
             <option selected>Choose...</option>
-            <option value="Northeast Photography">Northeast Photography</option>
-            <option value="Florida Photography">Florida Photography</option>
-            <option value="Travel/Landscape Photography">
-              Travel/Landscape Photography
-            </option>
+            {this.state.categoryInfo.map(cat => {
+              return <option value={cat.id}>{cat.place}</option>
+            })}
           </select>
         </div>
         <div className="input-group mb-3">

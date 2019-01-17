@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using content;
@@ -9,9 +10,10 @@ using content;
 namespace content.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190117193811_added ids for cat")]
+    partial class addedidsforcat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,23 +31,6 @@ namespace content.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Location");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            Place = "Northeast Photography"
-                        },
-                        new
-                        {
-                            Id = -2,
-                            Place = "Florida Photography"
-                        },
-                        new
-                        {
-                            Id = -3,
-                            Place = "Travel/Landscape Photography"
-                        });
                 });
 
             modelBuilder.Entity("Capstone.Models.Picture", b =>
@@ -82,48 +67,6 @@ namespace content.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tag");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            Tags = "Hawks/Eagles"
-                        },
-                        new
-                        {
-                            Id = -2,
-                            Tags = "Owls"
-                        },
-                        new
-                        {
-                            Id = -3,
-                            Tags = "Small Songbirds"
-                        },
-                        new
-                        {
-                            Id = -4,
-                            Tags = "Ducks and Waterfowl"
-                        },
-                        new
-                        {
-                            Id = -5,
-                            Tags = "Larger Misc. Birds"
-                        },
-                        new
-                        {
-                            Id = -6,
-                            Tags = "Landscape"
-                        },
-                        new
-                        {
-                            Id = -7,
-                            Tags = "Non-Avian Wildlife"
-                        },
-                        new
-                        {
-                            Id = -8,
-                            Tags = "Shorebirds"
-                        });
                 });
 
             modelBuilder.Entity("Capstone.Models.Picture", b =>

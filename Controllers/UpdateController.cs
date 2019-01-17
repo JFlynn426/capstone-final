@@ -34,6 +34,7 @@ namespace Capstone.Controllers
       var results = this.db.Pictures;
       return await results.ToListAsync();
     }
+
   }
 
 }

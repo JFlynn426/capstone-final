@@ -13,6 +13,13 @@
   margin-right: auto;
   margin-left: auto;
 }
+.navtitle {
+  justify-content: center;
+  width: 100%;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(136, 204, 158);
+}
 .UploadInputs {
   display: flex;
 }

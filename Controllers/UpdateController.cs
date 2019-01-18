@@ -31,7 +31,9 @@ namespace Capstone.Controllers
     [HttpGet]
     public async Task<ActionResult<List<Picture>>> GetAll()
     {
-      var results = this.db.Pictures;
+      var results = this.db.Pictures
+            .Include(i => i.Location)
+            .Include(i => i.Tag);
       return await results.ToListAsync();
     }
 

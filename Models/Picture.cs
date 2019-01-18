@@ -7,10 +7,10 @@ namespace Capstone.Models
 
     public string PictureInfo { get; set; }
 
-    public Location Place { get; set; }
-    public int? PlaceId { get; set; }
+    public Location Location { get; set; }
+    public int? LocationId { get; set; }
     public int? TagId { get; set; }
-    public Tag Tags { get; set; }
+    public Tag Tag { get; set; }
 
     public string ImageUrl { get; set; }
 

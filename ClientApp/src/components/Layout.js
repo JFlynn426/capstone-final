@@ -13,6 +13,7 @@ import {
   DropdownItem
 } from 'reactstrap'
 import { NavMenu } from './NavMenu'
+import axios from 'axios'
 import { stack as Menu } from 'react-burger-menu'
 export class Layout extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ export class Layout extends Component {
 
     this.toggle = this.toggle.bind(this)
     this.state = {
+      categoryInfo: [],
+      tagInfo: [],
       isOpen: false
     }
   }
@@ -32,11 +35,30 @@ export class Layout extends Component {
   showSettings(event) {
     event.preventDefault()
   }
-
+  componentDidMount = () => {
+    this.getCategories()
+    this.getTags()
+  }
+  getCategories = () => {
+    axios.get('https://localhost:5001/api/cats').then(resp => {
+      console.log({ resp })
+      this.setState({
+        categoryInfo: resp.data
+      })
+    })
+  }
+  getTags = () => {
+    axios.get('https://localhost:5001/api/tags').then(resp => {
+      console.log({ resp })
+      this.setState({
+        tagInfo: resp.data
+      })
+    })
+  }
   render() {
     return (
       <div className="background">
-        <Menu>
+        {/* <Menu>
           <a id="home" className="menu-item" href="/">
             Home
           </a>
@@ -97,36 +119,49 @@ export class Layout extends Component {
           <a className="menu-item--small" href="/PhotoUpload">
             Photo Upload
           </a>
-        </Menu>
-        <header className="title">
-          <h1>John Flynn Photography</h1>
-          {/* <div>
-            <Navbar color="light" light expand="md">
-              <NavbarToggler onClick={this.toggle} />
-              <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                  <NavItem>
-                    <NavLink href="/Home">Home</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="/Categories">Categories</NavLink>
-                  </NavItem>
-                  <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                      Options
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Option 1</DropdownItem>
-                      <DropdownItem>Option 2</DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>Reset</DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </Nav>
-              </Collapse>
-            </Navbar>
-          </div> */}
-        </header>
+        </Menu> */}
+        {/* <header className="title">
+          <h1>John Flynn Photography</h1> */}
+        <div>
+          <Navbar color="dark" light expand="md">
+            <h1 className="navtitle">John Flynn Photography</h1>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="/">Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/Categories">Categories</NavLink>
+                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Options
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    {this.state.categoryInfo.map(cat => {
+                      return (
+                        <DropdownItem href={`/CategoryView/${cat.place}`}>
+                          {cat.place}
+                        </DropdownItem>
+                      )
+                    })}
+                    <DropdownItem divider />
+
+                    {this.state.tagInfo.map(tag => {
+                      return (
+                        <DropdownItem href={`/TagView/${tag.tags}`}>
+                          {tag.tags}
+                        </DropdownItem>
+                      )
+                    })}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+        {/* </header> */}
         <div>{this.props.children}</div>
       </div>
     )

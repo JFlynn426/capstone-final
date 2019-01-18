@@ -23,7 +23,8 @@ namespace Capstone.Controllers
     [HttpGet("{Tag}")]
     public async Task<ActionResult<List<Picture>>> Get([FromRoute] string Tag)
     {
-      var results = this.db.Pictures.Where(Picture => Picture.Tags.Tags.ToLower() == Tag.ToLower());
+      var results = this.db.Pictures.Include(i => i.Location)
+            .Include(i => i.Tag).Where(Picture => Picture.Tag.Tags.ToLower() == Tag.ToLower());
       return await results.ToListAsync();
     }
 

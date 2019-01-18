@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -13,8 +14,10 @@ namespace content
 {
   public class Startup
   {
+
     public Startup(IConfiguration configuration)
     {
+      new DatabaseContext().Database.Migrate();
       Configuration = configuration;
     }
 

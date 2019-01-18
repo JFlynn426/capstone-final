@@ -28,7 +28,7 @@ namespace content.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location");
+                    b.ToTable("Place");
 
                     b.HasData(
                         new
@@ -55,9 +55,9 @@ namespace content.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<string>("PictureInfo");
+                    b.Property<int?>("LocationId");
 
-                    b.Property<int?>("PlaceId");
+                    b.Property<string>("PictureInfo");
 
                     b.Property<string>("SpeciesName");
 
@@ -65,7 +65,7 @@ namespace content.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceId");
+                    b.HasIndex("LocationId");
 
                     b.HasIndex("TagId");
 
@@ -81,7 +81,7 @@ namespace content.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
 
                     b.HasData(
                         new
@@ -128,11 +128,11 @@ namespace content.Migrations
 
             modelBuilder.Entity("Capstone.Models.Picture", b =>
                 {
-                    b.HasOne("Capstone.Models.Location", "Place")
+                    b.HasOne("Capstone.Models.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("PlaceId");
+                        .HasForeignKey("LocationId");
 
-                    b.HasOne("Capstone.Models.Tag", "Tags")
+                    b.HasOne("Capstone.Models.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId");
                 });

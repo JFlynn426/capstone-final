@@ -13,7 +13,9 @@ class PhotoUpload extends Component {
     category: '',
     tag: '',
     categoryInfo: [],
-    tagInfo: []
+    tagInfo: [],
+    place: '',
+    tags: ''
   }
   componentDidMount = () => {
     this.getCategories()
@@ -66,12 +68,14 @@ class PhotoUpload extends Component {
   }
   updateCategory = event => {
     this.setState({
-      category: event.target.value
+      category: event.target.value,
+      place: event.target.key
     })
   }
   updateTag = event => {
     this.setState({
-      tag: event.target.value
+      tag: event.target.value,
+      tags: event.target.key
     })
   }
   sendToDB = event => {
@@ -80,8 +84,10 @@ class PhotoUpload extends Component {
         SpeciesName: `${this.state.title}`,
         PictureInfo: `${this.state.description}`,
         ImageUrl: `${this.state.image}`,
-        Place: `${this.state.category}`,
-        Tags: `${this.state.tag}`
+        PlaceId: parseInt(this.state.category),
+        Place: `${this.state.place}`,
+        Tags: `${this.state.tags}`,
+        TagId: parseInt(this.state.tag)
       })
       .then(
         console.log(`${this.state.title}, ${this.state.description}`)
@@ -153,14 +159,13 @@ class PhotoUpload extends Component {
             onChange={this.updateTag}
           >
             <option selected>Choose...</option>
-            <option value="Hawks/Eagles">Hawks/Eagles</option>
-            <option value="Owls">Owls</option>
-            <option value="Small Songbirds">Small Songbirds</option>
-            <option value="Ducks and Waterfowl">Ducks and Waterfowl</option>
-            <option value="Larger Misc. Birds">Larger Misc. Birds</option>
-            <option value="Landscape">Landscape</option>
-            <option value="Non-Avian Wildlife">Non-Avian Wildlife</option>
-            <option value="Shorebirds">Shorebirds</option>
+            {this.state.tagInfo.map(tag => {
+              return (
+                <option key={tag.tags} value={tag.id}>
+                  {tag.tags}
+                </option>
+              )
+            })}
           </select>
         </div>
         <div className="input-group mb-3">

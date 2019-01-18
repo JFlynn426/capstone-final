@@ -6,6 +6,7 @@ import CategoryView from './components/CategoryView'
 import PhotoView from './components/PhotoView'
 import PhotoUpload from './components/PhotoUpload'
 import TagView from './components/TagView'
+import Categories from './components/Category'
 
 export default class App extends Component {
   static displayName = App.name
@@ -16,6 +17,7 @@ export default class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/CategoryView/:category" component={CategoryView} />
         <Route path="/TagView/:tag" component={TagView} />
+        <Route path="/Categories" component={Categories} />
         <Route path="/PhotoView/:photoID" component={PhotoView} />
         <Route path="/PhotoUpload" component={PhotoUpload} />
       </Layout>

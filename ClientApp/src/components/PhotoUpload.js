@@ -22,7 +22,7 @@ class PhotoUpload extends Component {
     this.getTags()
   }
   getCategories = () => {
-    axios.get('https://localhost:5001/api/cats').then(resp => {
+    axios.get('/api/cats').then(resp => {
       console.log({ resp })
       this.setState({
         categoryInfo: resp.data
@@ -30,7 +30,7 @@ class PhotoUpload extends Component {
     })
   }
   getTags = () => {
-    axios.get('https://localhost:5001/api/tags').then(resp => {
+    axios.get('/api/tags').then(resp => {
       console.log({ resp })
       this.setState({
         tagInfo: resp.data
@@ -80,7 +80,7 @@ class PhotoUpload extends Component {
   }
   sendToDB = event => {
     axios
-      .post('https://localhost:5001/api/Update', {
+      .post('/api/Update', {
         SpeciesName: `${this.state.title}`,
         PictureInfo: `${this.state.description}`,
         ImageUrl: `${this.state.image}`,

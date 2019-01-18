@@ -12,7 +12,7 @@ class TagView extends Component {
 
   loadInfo = () => {
     const tag = this.props.match.params.tag
-    axios.get(`https://localhost:5001/api/TagView/${tag}`).then(resp => {
+    axios.get(`/api/TagView/${tag}`).then(resp => {
       this.setState({
         search: resp.data
       })

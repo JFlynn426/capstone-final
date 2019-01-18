@@ -40,7 +40,7 @@ export class Layout extends Component {
     this.getTags()
   }
   getCategories = () => {
-    axios.get('https://localhost:5001/api/cats').then(resp => {
+    axios.get('/api/cats').then(resp => {
       console.log({ resp })
       this.setState({
         categoryInfo: resp.data
@@ -48,7 +48,7 @@ export class Layout extends Component {
     })
   }
   getTags = () => {
-    axios.get('https://localhost:5001/api/tags').then(resp => {
+    axios.get('/api/tags').then(resp => {
       console.log({ resp })
       this.setState({
         tagInfo: resp.data

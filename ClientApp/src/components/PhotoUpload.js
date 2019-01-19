@@ -37,6 +37,11 @@ class PhotoUpload extends Component {
       })
     })
   }
+  getDB = () => {
+    axios.get('/api/Update').then(resp => {
+      console.log({ resp })
+    })
+  }
   onDrop = files => {
     const form = new FormData()
     form.append('file', files[0])
@@ -68,14 +73,12 @@ class PhotoUpload extends Component {
   }
   updateCategory = event => {
     this.setState({
-      category: event.target.value,
-      place: event.target.key
+      category: event.target.value
     })
   }
   updateTag = event => {
     this.setState({
-      tag: event.target.value,
-      tags: event.target.key
+      tag: event.target.value
     })
   }
   sendToDB = event => {
@@ -84,18 +87,15 @@ class PhotoUpload extends Component {
         SpeciesName: `${this.state.title}`,
         PictureInfo: `${this.state.description}`,
         ImageUrl: `${this.state.image}`,
-        PlaceId: parseInt(this.state.category),
-        Place: `${this.state.place}`,
-        Tags: `${this.state.tags}`,
+        LocationId: parseInt(this.state.category),
         TagId: parseInt(this.state.tag)
       })
       .then(
-        console.log(`${this.state.title}, ${this.state.description}`)
-        // this.setState({
-        //   title: '',
-        //   description: '',
-        //   image: uploadicon
-        // })
+        this.setState({
+          title: '',
+          description: '',
+          image: uploadicon
+        })
       )
   }
 
@@ -160,11 +160,7 @@ class PhotoUpload extends Component {
           >
             <option selected>Choose...</option>
             {this.state.tagInfo.map(tag => {
-              return (
-                <option key={tag.tags} value={tag.id}>
-                  {tag.tags}
-                </option>
-              )
+              return <option value={tag.id}>{tag.tags}</option>
             })}
           </select>
         </div>

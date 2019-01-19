@@ -36,7 +36,14 @@ namespace Capstone.Controllers
             .Include(i => i.Tag);
       return await results.ToListAsync();
     }
-
+    [HttpDelete("{id}")]
+    public ActionResult<Picture> DeleteAction([FromRoute] int id)
+    {
+      var PicToRemove = this.db.Pictures.FirstOrDefault(Picture => Picture.Id == id);
+      this.db.Pictures.Remove(PicToRemove);
+      this.db.SaveChanges();
+      return PicToRemove;
+    }
   }
 
 }

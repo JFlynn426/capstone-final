@@ -20,10 +20,10 @@ class PhotoUpload extends Component {
   componentDidMount = () => {
     this.getCategories()
     this.getTags()
+    this.getDB()
   }
   getCategories = () => {
     axios.get('/api/cats').then(resp => {
-      console.log({ resp })
       this.setState({
         categoryInfo: resp.data
       })
@@ -31,7 +31,6 @@ class PhotoUpload extends Component {
   }
   getTags = () => {
     axios.get('/api/tags').then(resp => {
-      console.log({ resp })
       this.setState({
         tagInfo: resp.data
       })

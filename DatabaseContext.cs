@@ -45,7 +45,7 @@ namespace content
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
 
       modelBuilder.Entity<Tag>().HasData(
-            new Tag { Id = -1, Tags = "Hawks/Eagles" },
+            new Tag { Id = -1, Tags = "Hawks-Eagles" },
             new Tag { Id = -2, Tags = "Owls" },
             new Tag { Id = -3, Tags = "Small Songbirds" },
             new Tag { Id = -4, Tags = "Ducks and Waterfowl" },
@@ -59,7 +59,7 @@ namespace content
       modelBuilder.Entity<Location>().HasData(
         new Location { Id = -1, Place = "Northeast Photography" },
             new Location { Id = -2, Place = "Florida Photography" },
-            new Location { Id = -3, Place = "Travel/Landscape Photography" }
+            new Location { Id = -3, Place = "Travel-Landscape Photography" }
       );
     }
 

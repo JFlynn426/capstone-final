@@ -11,12 +11,12 @@ class CategoryView extends Component {
   }
   loadInfo = () => {
     const photoID = parseInt(this.props.match.params.photoID)
-    axios.get('/api/Update').then(resp => {
+    axios.get(`/api/PhotoView/${photoID}`).then(resp => {
       console.log({ resp })
       this.setState({
-        SpeciesName: resp.data[photoID - 1].speciesName,
-        PictureInfo: resp.data[photoID - 1].pictureInfo,
-        ImageUrl: resp.data[photoID - 1].imageUrl
+        SpeciesName: resp.data[0].speciesName,
+        PictureInfo: resp.data[0].pictureInfo,
+        ImageUrl: resp.data[0].imageUrl
       })
     })
   }

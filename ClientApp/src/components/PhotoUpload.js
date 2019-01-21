@@ -81,21 +81,22 @@ class PhotoUpload extends Component {
     })
   }
   sendToDB = event => {
-    axios
-      .post('/api/Update', {
-        SpeciesName: `${this.state.title}`,
-        PictureInfo: `${this.state.description}`,
-        ImageUrl: `${this.state.image}`,
-        LocationId: parseInt(this.state.category),
-        TagId: parseInt(this.state.tag)
-      })
-      .then(
-        this.setState({
-          title: '',
-          description: '',
-          image: uploadicon
-        })
-      )
+    axios.post('/api/Update', {
+      SpeciesName: `${this.state.title}`,
+      PictureInfo: `${this.state.description}`,
+      ImageUrl: `${this.state.image}`,
+      LocationId: parseInt(this.state.category),
+      TagId: parseInt(this.state.tag)
+    })
+    // .then(
+    //   this.setState({
+    //     title: '',
+    //     description: '',
+    //     image: uploadicon,
+    //     category: '',
+    //     tag: ''
+    //   })
+    // )
   }
 
   render() {

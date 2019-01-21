@@ -131,12 +131,9 @@ export class Layout extends Component {
                 <NavItem>
                   <NavLink href="/">Home</NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink href="/Categories">Categories</NavLink>
-                </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
-                    Options
+                    Categories
                   </DropdownToggle>
                   <DropdownMenu right>
                     {this.state.categoryInfo.map(cat => {

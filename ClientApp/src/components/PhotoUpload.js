@@ -81,22 +81,23 @@ class PhotoUpload extends Component {
     })
   }
   sendToDB = event => {
-    axios.post('/api/Update', {
-      SpeciesName: `${this.state.title}`,
-      PictureInfo: `${this.state.description}`,
-      ImageUrl: `${this.state.image}`,
-      LocationId: parseInt(this.state.category),
-      TagId: parseInt(this.state.tag)
-    })
-    // .then(
-    //   this.setState({
-    //     title: '',
-    //     description: '',
-    //     image: uploadicon,
-    //     category: '',
-    //     tag: ''
-    //   })
-    // )
+    axios
+      .post('/api/Update', {
+        SpeciesName: `${this.state.title}`,
+        PictureInfo: `${this.state.description}`,
+        ImageUrl: `${this.state.image}`,
+        LocationId: parseInt(this.state.category),
+        TagId: parseInt(this.state.tag)
+      })
+      .then(
+        this.setState({
+          title: '',
+          description: '',
+          image: uploadicon,
+          category: '',
+          tag: ''
+        })
+      )
   }
 
   render() {
@@ -140,6 +141,7 @@ class PhotoUpload extends Component {
             className="custom-select"
             id="inputGroupSelect01"
             onChange={this.updateCategory}
+            value={this.state.category}
           >
             <option selected>Choose...</option>
             {this.state.categoryInfo.map(cat => {
@@ -157,6 +159,7 @@ class PhotoUpload extends Component {
             className="custom-select"
             id="inputGroupSelect01"
             onChange={this.updateTag}
+            value={this.state.tag}
           >
             <option selected>Choose...</option>
             {this.state.tagInfo.map(tag => {
@@ -176,6 +179,7 @@ class PhotoUpload extends Component {
             aria-label="Username"
             aria-describedby="basic-addon1"
             onChange={this.updateTitle}
+            value={this.state.title}
           />
         </div>
         <div className="input-group">
@@ -189,6 +193,7 @@ class PhotoUpload extends Component {
             aria-label="With textarea"
             rows="10"
             onChange={this.updateDescription}
+            value={this.state.description}
           />
         </div>
         <button

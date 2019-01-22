@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ModalImage from 'react-modal-image'
 class CategoryView extends Component {
   state = {
     SpeciesName: '',
@@ -25,7 +26,12 @@ class CategoryView extends Component {
     return (
       <div className="App">
         <h2>{this.state.SpeciesName}</h2>
-        <img className="photoview" src={this.state.ImageUrl} />
+        <ModalImage
+          className="photoview"
+          small={this.state.ImageUrl}
+          large={this.state.ImageUrl}
+        />
+        <h5>Click image for fullscreen</h5>
         <footer>
           <p>{this.state.PictureInfo}</p>
         </footer>

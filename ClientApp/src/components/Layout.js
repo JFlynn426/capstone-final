@@ -12,9 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap'
-import { NavMenu } from './NavMenu'
 import axios from 'axios'
-import { stack as Menu } from 'react-burger-menu'
 export class Layout extends Component {
   constructor(props) {
     super(props)

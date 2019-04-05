@@ -127,10 +127,10 @@ h5 {
       rgba(194, 194, 194, 0.19),
       rgba(209, 209, 209, 0.19)
     ), */
-  background: url(./backgrounds/drops.jpg);
+
   background-color: black;
   background-repeat: no-repeat;
-  background-size: cover;
+ 
 }
 element.style {
   max-width: 80vw;
